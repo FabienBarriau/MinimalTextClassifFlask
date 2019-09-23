@@ -1,0 +1,35 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Text Classif</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	</head>
+	<body>
+		<header>
+			<h1> Text Classif </h1>
+		</header>
+		<div id="div_body">
+            <div id="div_form">
+                <form action="" method="post">
+					<textarea name="text" rows="5" cols="33">
+						Hello World !
+					</textarea>
+					<input type="submit" value="Send"/>
+				</form>
+            </div >
+            {% if request.method == "POST" %}
+				<div id="div_text">
+					<p> {{ text }} </p>
+				</div>
+				<div id="div_prediction" class="{{ sentiment_pred }}">
+					<p> {{ sentiment_pred }} </p>
+				</div>
+            {% else %}
+				<div id="div_waiting">
+					<p> Enter you text </p>
+				</div>
+            {% endif %}
+        </div>
+	</body>
+</html>
